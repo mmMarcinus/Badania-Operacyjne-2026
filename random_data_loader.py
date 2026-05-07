@@ -2,6 +2,8 @@ import random
 import math
 from constants import P, K #
 
+
+# TODO -> dodać seeda do losowania, można powtarzać eksperymenty
 def generate_test_data(n_demand=20, n_locations=10, area_size=100):
     """
     Generuje dane testowe dla problemu optymalizacji stacji ładowania.

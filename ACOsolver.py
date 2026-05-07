@@ -1,7 +1,7 @@
 import random
 import numpy as np
 from constants import P, K 
-from evaluator import calculate_z, assign_demand2
+from evaluator import calculate_z, assign_demand1, assign_demand2
 
 class ACOSolver:
     def __init__(self, demand_points, dist_matrix, costs_f, costs_c, budget, M, 
@@ -65,7 +65,7 @@ class ACOSolver:
             for _ in range(self.n_ants):
                 sol = self.construct_solution()
                 # Obliczanie Z dla mrówki
-                z = calculate_z(self.dist_matrix, sol, assign_demand2)
+                z = calculate_z(d=self.dist_matrix, ant_sol=sol, demand_points=self.demand_points, assign_func=assign_demand1)
                 solutions.append((sol, z))
                 
                 if z < best_z:
@@ -77,18 +77,10 @@ class ACOSolver:
             
             # Wzmocnienie
             for sol, z in solutions:
-                reward = 1.0 / z  # Im mniejsze Z, tym większa nagroda
+                reward = 1.0 / z  
                 for j, k in sol:
                     self.pheromones[j] += reward
 
             print(f"Iteracja {i+1}: Najlepsze Z = {best_z}")
 
         return best_sol, best_z
-
-# PRZYKŁAD UŻYCIA (Dane testowe):
-# demand = {0: 10, 1: 20}
-# dists = [[2, 10], [8, 3]]
-# costs_f = [100, 150]
-# costs_c = [50, 50]
-# solver = ACOSolver(demand, dists, costs_f, costs_c, budget=500, M=3)
-# best_sol, best_val = solver.run()
