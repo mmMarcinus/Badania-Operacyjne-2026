@@ -4,11 +4,13 @@ from constants import P, K #
 
 
 # TODO -> dodać seeda do losowania, można powtarzać eksperymenty
-def generate_test_data(n_demand=20, n_locations=10, area_size=100):
+def generate_test_data(n_demand=20, n_locations=10, area_size=100, seed=None):
     """
     Generuje dane testowe dla problemu optymalizacji stacji ładowania.
     """
-    
+    if seed is not None:
+        random.seed(seed)
+
     # Generowanie współrzędnych punktów popytu (I)
     demand_coords = [(random.uniform(0, area_size), random.uniform(0, area_size)) 
                      for _ in range(n_demand)]
@@ -19,7 +21,7 @@ def generate_test_data(n_demand=20, n_locations=10, area_size=100):
     
     # Tworzenie słownika demand_points {i: w_i}
     # Popyt (liczba aut) od 5 do 30 na punkt
-    demand_points = {i: random.randint(5, 30) for i in range(n_demand)}
+    demand_points = {i: random.randint(5, 25) for i in range(n_demand)}
     
     # Tworzenie macierzy odległości dist_matrix[i][j]
     dist_matrix = []
@@ -39,7 +41,7 @@ def generate_test_data(n_demand=20, n_locations=10, area_size=100):
     
     # Budżet: ustawiony tak, by starczyło na około 40-60% stacji z pełnym wyposażeniem
     avg_station_cost = (sum(costs_f)/n_locations) + (M/2 * sum(costs_c)/n_locations)
-    budget = round(avg_station_cost * (n_locations * 0.5)) 
+    budget = round(avg_station_cost * (n_locations * 0.75)) 
     
     return { 
         "demand_points": demand_points,
