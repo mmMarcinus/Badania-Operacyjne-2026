@@ -3,23 +3,29 @@ import math
 from constants import P, K #
 
 
-# TODO -> dodać seeda do losowania, można powtarzać eksperymenty
-def generate_test_data(n_demand=20, n_locations=10, area_size=100):
+def generate_test_data(n_demand=20, n_locations=10, area_size=100, seed=None):
     """
     Generuje dane testowe dla problemu optymalizacji stacji ładowania.
+
+    Args:
+        n_demand: liczba punktów popytu.
+        n_locations: liczba potencjalnych lokalizacji stacji.
+        area_size: rozmiar obszaru w jednostkach.
+        seed: opcjonalny seed do deterministycznego losowania.
     """
+    rng = random.Random(seed)
     
     # Generowanie współrzędnych punktów popytu (I)
-    demand_coords = [(random.uniform(0, area_size), random.uniform(0, area_size)) 
+    demand_coords = [(rng.uniform(0, area_size), rng.uniform(0, area_size)) 
                      for _ in range(n_demand)]
     
     # Generowanie współrzędnych potencjalnych lokalizacji (J)
-    loc_coords = [(random.uniform(0, area_size), random.uniform(0, area_size)) 
+    loc_coords = [(rng.uniform(0, area_size), rng.uniform(0, area_size)) 
                   for _ in range(n_locations)]
     
     # Tworzenie słownika demand_points {i: w_i}
     # Popyt (liczba aut) od 5 do 30 na punkt
-    demand_points = {i: random.randint(5, 30) for i in range(n_demand)}
+    demand_points = {i: rng.randint(5, 30) for i in range(n_demand)}
     
     # Tworzenie macierzy odległości dist_matrix[i][j]
     dist_matrix = []
@@ -32,8 +38,8 @@ def generate_test_data(n_demand=20, n_locations=10, area_size=100):
         dist_matrix.append(row)
         
     # Koszty i parametry techniczne
-    costs_f = [random.randint(500, 1500) for _ in range(n_locations)] # f_j
-    costs_c = [random.randint(100, 300) for _ in range(n_locations)]  # c_j
+    costs_f = [rng.randint(500, 1500) for _ in range(n_locations)] # f_j
+    costs_c = [rng.randint(100, 300) for _ in range(n_locations)]  # c_j
     
     M = 5  # Maksymalna liczba ładowarek na stację
     
