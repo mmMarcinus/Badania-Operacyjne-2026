@@ -4,7 +4,7 @@ from constants import P, K
 from evaluator import calculate_z, assign_demand1, assign_demand2
 
 class ACOSolver:
-    def __init__(self, demand_points, dist_matrix, costs_f, costs_c, budget, M,  heuristic="cost",
+    def __init__(self, demand_points, dist_matrix, costs_f, costs_c, budget, M,  heuristic="cost", assign_func=assign_demand1,
                  n_ants=10, n_iterations=50, alpha=1, beta=2, evaporation=0.1):
         self.demand_points = demand_points
         self.dist_matrix = dist_matrix
@@ -13,7 +13,7 @@ class ACOSolver:
         self.costs_c = costs_c  # Koszty ładowarki
         self.budget = budget    # Budżet B
         self.M = M              # Maksymalna liczba ładowarek
-        #
+        self.assign_func = assign_func
         
         self.heuristic = heuristic
         self.n_ants = n_ants
@@ -120,7 +120,7 @@ class ACOSolver:
             for _ in range(self.n_ants):
                 sol = self.construct_solution()
                 # Obliczanie Z dla mrówki
-                z = calculate_z(d=self.dist_matrix, ant_sol=sol, demand_points=self.demand_points, assign_func=assign_demand1)
+                z = calculate_z(d=self.dist_matrix, ant_sol=sol, demand_points=self.demand_points, assign_func=self.assign_func)
                 solutions.append((sol, z))
                 
                 if z < best_z:

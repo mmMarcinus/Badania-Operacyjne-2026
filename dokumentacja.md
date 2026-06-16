@@ -68,70 +68,72 @@ $$\min \quad Z = \sum_{i \in I} \sum_{j \in J} (d_{ij} \cdot x_{ij}) + \sum_{i \
 
 ## Eksperymenty obliczeniowe
 
-### 1. Wpływ liczby mrówek na czas i wartość funkcji kosztu
+Stałe użyte w eksperymentach dotyczących liczby mrówek i iteracji:
+```
+COST_F = 250 # Stały koszt otwarcia stacji (k PLN)
+COST_C = 120  # Koszt jednej ładowarki DC (k PLN)
+M_LIMIT = 6      # Maksymalna liczba ładowarek na stacji
+BUDGET = 4500 # Całkowity budżet (k PLN)
+K = 10           # Przykładowa wydajność (aut na ładowarkę)
+P = 5   
+```
+
+Eksperymenty zostały wykonane dla dwóch różnych funkcji przypisania popytu:
+- assign_demand1 (domyślna) - Łączy punkty w pary na podstawie samej odległości. Sortuje wszystkie możliwe kombinacje od najbliższej do najdalszej i przydziela zasoby po kolei, dopóki nie wyczerpie pojemności lub popytu.
+
+- assign_demand2 - W każdej iteracji wybiera ten punkt popytu, który najbardziej „ucierpi” (poniesie największy koszt/stratę odległości), jeśli nie zostanie obsłużony przez swoją najbliższą, optymalną stację. Gdy stacja się zapełnia, kolejka priorytetowa jest przeliczana na nowo.
+
+### 1. Wpływ liczby mrówek na czas i wartość funkcji kosztu (assign_demand1)
 
 |   num_ants |   Min Koszt |   Max Koszt |   Średni Koszt |   Odchylenie Std |   Czas (s) |
 |-----------:|------------:|------------:|---------------:|-----------------:|-----------:|
-|          5 |     4148.64 |     4416.25 |        4230.75 |            87.37 |     0.1662 |
-|         10 |     4148.64 |     4360.99 |        4221.71 |            75.14 |     0.3144 |
-|         20 |     4148.64 |     4222.05 |        4167.74 |            27.89 |     0.5925 |
-|         50 |     4148.64 |     4163.36 |        4151.58 |             5.89 |     1.2644 |
-|        100 |     4148.64 |     4148.64 |        4148.64 |             0    |     3.3473 |
+|          5 |     4272.91 |     4672.47 |        4436.65 |           121.15 |     0.1459 |
+|         10 |     4210.99 |     4560.01 |        4415.4  |           129.05 |     0.2907 |
+|         20 |     4210.99 |     4423.11 |        4299.57 |            61.28 |     0.6258 |
+|         50 |     4210.99 |     4332.96 |        4235.38 |            48.79 |     1.2316 |
+|        100 |     4210.99 |     4272.91 |        4217.18 |            18.58 |     2.9676 |
     
-![Wykres - Liczba mrówek](experiments/results/plot_num_ants.png)
+![Wykres - Liczba mrówek](experiments/results/plot_num_ants_report.png)
 
-### 2. Wpływ liczby iteracji na czas i wartość funkcji kosztu
+### 2. Wpływ liczby mrówek na czas i wartość funkcji kosztu (assign_demand2)
+
+|   num_ants |   Min Koszt |   Max Koszt |   Średni Koszt |   Odchylenie Std |   Czas (s) |
+|-----------:|------------:|------------:|---------------:|-----------------:|-----------:|
+|          5 |     4389.67 |     5415.38 |        4864.55 |           341.42 |     0.2109 |
+|         10 |     4389.67 |     5170.38 |        4730.16 |           345.3  |     0.3543 |
+|         20 |     4389.67 |     5133.33 |        4465.88 |           222.49 |     0.6826 |
+|         50 |     4389.67 |     4941.75 |        4445.34 |           165.48 |     1.4431 |
+|        100 |     4389.67 |     4394.29 |        4390.13 |             1.39 |     3.1559 |
+
+![Wykres - Liczba mrowek 2](experiments/results/plot_num_ants2.png)
+
+### 3.. Wpływ liczby iteracji na czas i wartość funkcji kosztu (assign_demand1)
 
 |   num_iterations |   Min Koszt |   Max Koszt |   Średni Koszt |   Odchylenie Std |   Czas (s) |
 |-----------------:|------------:|------------:|---------------:|-----------------:|-----------:|
-|               10 |     4241.69 |     4491.51 |        4379.42 |            77.74 |     0.0731 |
-|               20 |     4163.36 |     4561.74 |        4238.37 |           121.29 |     0.1524 |
-|               50 |     4148.64 |     4276    |        4196.14 |            46.87 |     0.3305 |
-|              100 |     4148.64 |     4222.05 |        4160.4  |            21.58 |     0.71   |
-|              200 |     4148.64 |     4222.05 |        4157.45 |            21.98 |     0.9011 |
+|               10 |     4332.96 |     5047.68 |        4576.28 |           219.4  |     0.0832 |
+|               20 |     4210.99 |     4730.78 |        4394.54 |           177.74 |     0.1246 |
+|               50 |     4210.99 |     4423.11 |        4284.99 |            67.29 |     0.2887 |
+|              100 |     4210.99 |     4493.87 |        4270.36 |            84.8  |     0.5836 |
+|              200 |     4210.99 |     4336.02 |        4229.68 |            39.96 |     1.1717 |
 
-![Wykres - Liczba iteracji](experiments/results/plot_num_iterations.png)
-
-### 3. Wrażliwość modelu na cięcia budżetowe (Stres-test)
-
-Badanie ma na celu sprawdzenie granicy wydolności systemu oraz zachowania algorytmu w obliczu ograniczania kapitału inwestycyjnego. Wyniki zostały przeskalowane do tysięcy złotych (k PLN) w celu poprawy czytelności.
-
-| Wariant Budżetu | Limit (k PLN) | Wydano (k PLN) | Funkcja Z (k PLN) | Koszt Transportu (k PLN) | Kary (k PLN) | Otwarte Stacje | Liczba Ładowarek |
-|:---:|---:|---:|---:|---:|---:|---:|---:|
-| **100%** | 15.0 | 8.2 | 10289.1 | 4734.1 | 5555.0 | 20 | 27 |
-| **80%** | 12.0 | 8.2 | 10289.1 | 4734.1 | 5555.0 | 20 | 27 |
-| **60%** | 9.0  | 8.2 | 10289.1 | 4734.1 | 5555.0 | 20 | 27 |
-| **40%** | 6.0  | 5.7 | 6589.1  | 334.1  | 6255.0 | 13 | 20 |
-| **20%** | 3.0  | 2.7 | 7092.3  | 37.3   | 7055.0 | 5  | 12 |
-| **1%** | 0.1  | 0.0 | 8255.0  | 0.0    | 8255.0 | 0  | 0  |
-
-**Wnioski z analizy:**
-* **Zjawisko nadpodaży budżetu:** Zmniejszenie budżetu ze 100% do 60% nie wpłynęło na rozwiązanie. Algorytm wykorzystał optymalnie tylko 8.2k PLN, co oznacza, że pozostały kapitał nie dawał matematycznych korzyści.
-* **Punkt załamania infrastruktury:** Zauważalna zmiana następuje przy cięciu do 40% – drastycznie spada liczba otwartych stacji (z 20 do 13), co powoduje nagły wzrost kar za nieobsłużony popyt (z 5555.0 do 6255.0 k PLN). Warianty poniżej 40% oznaczają całkowitą zapaść systemu obsługi (koszty transportu spadają niemal do zera, bo kierowcy po prostu nie mają dokąd jechać).
-
-![Wykres - Wrażliwość na cięcia budżetowe](experiments/results/budget_experiment_plot.png)
-
-### 4. Zjawisko centralizacji vs decentralizacji (Limit ładowarek M)
-
-Eksperyment bada wpływ sztucznego ograniczenia wielkości pojedynczej stacji (parametru M) na topologię wygenerowanej sieci oraz całkowity dystans pokonywany przez użytkowników.
-
-| Limit M | Otwarte Stacje | Liczba Ładowarek | Całkowity Dystans (m) | Nieobsłużone Auta | Funkcja Z |
-|:---:|---:|---:|---:|---:|---:|
-| **2** | 11 | 14 | 235319.63 | 1371 | 7090319.63 |
-| **4** | 10 | 15 | 203471.71 | 1351 | 6958471.71 |
-| **6** | 9  | 16 | 154876.01 | 1331 | 6809876.01 |
-| **8** | 9  | 17 | 182652.65 | 1311 | 6737652.65 |
-| **12** | 9  | 17 | 220204.35 | 1311 | 6775204.35 |
-
-**Wnioski z analizy:**
-* **Klasyczny efekt "nożyc":** Ograniczenie M wymusza zachowania kompensacyjne systemu. Przy skrajnej decentralizacji (M=2) algorytm zmuszony jest otworzyć aż 11 mniejszych stacji, co mimo wszystko nie pozwala obsłużyć tylu aut, co w wariantach scentralizowanych (liczba nieobsłużonych aut to 1371).
-* **Optimum topologiczne:** Parametr M=6 wydaje się optymalnym kompromisem przestrzenno-kosztowym ("Sweet Spot"). Generuje on najniższy całkowity dystans pokonywany przez kierowców (154876 m). Zwiększanie limitu do wielkich hubów (M=8 i M=12) pozwala zamontować więcej ładowarek (17) w mniejszej liczbie lokalizacji (9), ale kosztem wydłużenia dojazdów do tych nielicznych stacji (dystans rośnie do ponad 220 km).
-
-![Wykres - Centralizacja sieci](experiments/results/m_limit_plot.png)
+![Wykres - Liczba iteracji](experiments/results/plot_num_iterations_report.png)
 
 
 
 
+### 4. Wpływ liczby iteracji na czas i wartość funkcji kosztu (assign_demand2)
+
+
+|   num_iterations |   Min Koszt |   Max Koszt |   Średni Koszt |   Odchylenie Std |   Czas (s) |
+|-----------------:|------------:|------------:|---------------:|-----------------:|-----------:|
+|               10 |     4394.29 |     5673.59 |        5173.41 |           540.26 |     0.0708 |
+|               20 |     4389.67 |     5462.56 |        4874.22 |           426.88 |     0.1453 |
+|               50 |     4389.67 |     5169.36 |        4791.97 |           333.6  |     0.3585 |
+|              100 |     4389.67 |     4985.28 |        4559.65 |           259.89 |     0.7103 |
+|              200 |     4389.67 |     4985.28 |        4449.23 |           178.68 |     1.1016 |
+
+![Wykres - Liczba iteracji 2](experiments/results/plot_num_iterations2.png)
 
 <!-- 
 # Optymalizacja sieci stacji ładowania aut elektrycznych

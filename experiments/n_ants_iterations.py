@@ -11,6 +11,8 @@ sys.path.append(parent_dir)
 
 from ACOsolver import ACOSolver
 from random_data_loader import generate_test_data
+from evaluator import assign_demand1, assign_demand2
+
 
 BASE_CONFIG = {
     "num_ants": 20,
@@ -46,6 +48,7 @@ def run_single_series(param_name, param_values, repeats=10):
                 budget=data['budget'],
                 M=data['M'],
                 heuristic="cost",
+                assign_func=assign_demand1,
                 alpha=0.5,
                 beta=1,
                 n_iterations=current_config["num_iterations"],
@@ -69,7 +72,7 @@ def run_single_series(param_name, param_values, repeats=10):
     return series_results
 
 def process_and_save(param_name, results):
-    """Buduje DataFrame, drukuje tabele (tekst + markdown), zapisuje pliki w /results."""
+    """Buduje DataFrame, drukuje tabele (markdown), zapisuje pliki w /results."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
     results_dir = os.path.join(script_dir, "results")
     os.makedirs(results_dir, exist_ok=True)
