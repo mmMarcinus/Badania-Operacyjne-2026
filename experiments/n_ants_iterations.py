@@ -11,6 +11,8 @@ sys.path.append(parent_dir)
 
 from ACOsolver import ACOSolver
 from random_data_loader import generate_test_data
+from evaluator import assign_demand1, assign_demand2
+
 
 BASE_CONFIG = {
     "num_ants": 20,
@@ -46,6 +48,7 @@ def run_single_series(param_name, param_values, repeats=10):
                 budget=data['budget'],
                 M=data['M'],
                 heuristic="cost",
+                assign_func=assign_demand1,
                 alpha=0.5,
                 beta=1,
                 n_iterations=current_config["num_iterations"],
