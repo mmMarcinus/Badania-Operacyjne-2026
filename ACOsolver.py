@@ -8,10 +8,13 @@ class ACOSolver:
                  n_ants=10, n_iterations=50, alpha=1, beta=2, evaporation=0.1):
         self.demand_points = demand_points
         self.dist_matrix = dist_matrix
+        # te rzeczy mamy ustalić jako stałe z info z neta
         self.costs_f = costs_f  # Koszty stałe stacji
         self.costs_c = costs_c  # Koszty ładowarki
         self.budget = budget    # Budżet B
         self.M = M              # Maksymalna liczba ładowarek
+        #
+        
         self.heuristic = heuristic
         self.n_ants = n_ants
         self.n_iterations = n_iterations
