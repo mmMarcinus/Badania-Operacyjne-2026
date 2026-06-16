@@ -44,7 +44,7 @@ def assign_demand2(ant_sol, demand_points, dist_matrix):
         if len(available) > 1:
             regret = available[1][0] - best_dist
         else:
-            regret = p - best_dist # do przemyslenia            
+            regret = P - best_dist # do przemyslenia            
         return (-regret, i, best_j, best_dist)
     
     queue = []
@@ -77,7 +77,7 @@ def assign_demand2(ant_sol, demand_points, dist_matrix):
     return x, remaining_demand
     
 
-def calculate_z(d, ant_sol, assign_func):
+def calculate_z(d, ant_sol, demand_points, assign_func):
     z = 0
     x, s = assign_func(ant_sol, demand_points, d)   # to mogą być stałe albo przekazywane jako argumenty
     for val in s.values():

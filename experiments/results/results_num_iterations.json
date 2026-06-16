@@ -1,0 +1,42 @@
+[
+    {
+        "num_iterations":10,
+        "Min Koszt":4332.96,
+        "Max Koszt":5047.68,
+        "Średni Koszt":4576.28,
+        "Odchylenie Std":219.4,
+        "Czas (s)":0.0832
+    },
+    {
+        "num_iterations":20,
+        "Min Koszt":4210.99,
+        "Max Koszt":4730.78,
+        "Średni Koszt":4394.54,
+        "Odchylenie Std":177.74,
+        "Czas (s)":0.1246
+    },
+    {
+        "num_iterations":50,
+        "Min Koszt":4210.99,
+        "Max Koszt":4423.11,
+        "Średni Koszt":4284.99,
+        "Odchylenie Std":67.29,
+        "Czas (s)":0.2887
+    },
+    {
+        "num_iterations":100,
+        "Min Koszt":4210.99,
+        "Max Koszt":4493.87,
+        "Średni Koszt":4270.36,
+        "Odchylenie Std":84.8,
+        "Czas (s)":0.5836
+    },
+    {
+        "num_iterations":200,
+        "Min Koszt":4210.99,
+        "Max Koszt":4336.02,
+        "Średni Koszt":4229.68,
+        "Odchylenie Std":39.96,
+        "Czas (s)":1.1717
+    }
+]
