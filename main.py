@@ -115,4 +115,4 @@ for heuristic in heuristics:
 
     plt.ylabel("Average Best Z")
 
-plt.show()
+    plt.savefig(f"heuristic_{heuristic}.png")

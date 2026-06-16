@@ -65,7 +65,32 @@ $$\min \quad Z = \sum_{i \in I} \sum_{j \in J} (d_{ij} \cdot x_{ij}) + \sum_{i \
 * **Logika przypisania popytu:**
     Popyt z punktu $i$ może zostać przypisany do stacji $j$ tylko wtedy, gdy stacja w tej lokalizacji zostanie otwarta, i nie może on przekroczyć całkowitego dostępnego popytu w danym punkcie:
     $$x_{ij} \le w_i \cdot y_j \quad \forall i \in I, \forall j \in J$$
+
+## Eksperymenty obliczeniowe
+
+### 1. Wpływ liczby mrówek na czas i wartość funkcji kosztu
+
+|   num_ants |   Min Koszt |   Max Koszt |   Średni Koszt |   Odchylenie Std |   Czas (s) |
+|-----------:|------------:|------------:|---------------:|-----------------:|-----------:|
+|          5 |     4148.64 |     4416.25 |        4230.75 |            87.37 |     0.1662 |
+|         10 |     4148.64 |     4360.99 |        4221.71 |            75.14 |     0.3144 |
+|         20 |     4148.64 |     4222.05 |        4167.74 |            27.89 |     0.5925 |
+|         50 |     4148.64 |     4163.36 |        4151.58 |             5.89 |     1.2644 |
+|        100 |     4148.64 |     4148.64 |        4148.64 |             0    |     3.3473 |
     
+![Wykres - Liczba mrówek](experiments/results/plot_num_ants.png)
+
+### 2. Wpływ liczby iteracji na czas i wartość funkcji kosztu
+
+|   num_iterations |   Min Koszt |   Max Koszt |   Średni Koszt |   Odchylenie Std |   Czas (s) |
+|-----------------:|------------:|------------:|---------------:|-----------------:|-----------:|
+|               10 |     4241.69 |     4491.51 |        4379.42 |            77.74 |     0.0731 |
+|               20 |     4163.36 |     4561.74 |        4238.37 |           121.29 |     0.1524 |
+|               50 |     4148.64 |     4276    |        4196.14 |            46.87 |     0.3305 |
+|              100 |     4148.64 |     4222.05 |        4160.4  |            21.58 |     0.71   |
+|              200 |     4148.64 |     4222.05 |        4157.45 |            21.98 |     0.9011 |
+
+![Wykres - Liczba iteracji](experiments/results/plot_num_iterations.png)
 <!-- 
 # Optymalizacja sieci stacji ładowania aut elektrycznych
 
