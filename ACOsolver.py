@@ -26,7 +26,7 @@ class ACOSolver:
         self.num_locations = len(costs_f)
         self.pheromones = np.ones(self.num_locations)
 
-    def _get_heuristic(self, j, threshold=30):
+    def _get_heuristic(self, j, threshold=1700):
         cost = (self.costs_f[j] + self.costs_c[j])
         cost = max(cost, 1e-6)
 
@@ -49,6 +49,24 @@ class ACOSolver:
             for i in self.demand_points:
                 score += self.demand_points[i] / (self.dist_matrix[i][j] + 1)
             return score / cost
+        
+    
+        elif self.heuristic == "coverage_efficiency":
+            covered_uniquely = 0
+            for i in self.demand_points:
+                distances = [self.dist_matrix[i][jj] for jj in range(self.num_locations)]
+                nearest = sorted(distances)
+                if nearest[0] == self.dist_matrix[i][j] and nearest[1] > threshold:
+                    covered_uniquely += self.demand_points[i]
+            return (covered_uniquely + 1) / cost
+        
+        elif self.heuristic == "gravity":
+            score = 0
+            for i in self.demand_points:
+                d = self.dist_matrix[i][j] + 1
+                score += self.demand_points[i] / (d ** 2)
+            return score / cost
+        
         return 1.0 / cost
 
     def construct_solution(self):
@@ -77,7 +95,7 @@ class ACOSolver:
             # k_j = random.randint(1, self.M)
 
             # Wyznaczanie liczby ładowarek (k_j) na podstawie popytu
-            threshold = 30
+            threshold = 1700
             nearby_demand = 0
             for i in self.demand_points:
                 if self.dist_matrix[i][chosen_idx] < threshold:
@@ -131,8 +149,9 @@ class ACOSolver:
             self.pheromones *= (1 - self.evaporation)
             
             # Wzmocnienie
-            for sol, z in solutions:
-                reward = 1.0 / z  
+            solutions_sorted = sorted(solutions, key=lambda x: x[1])
+            for sol, z in solutions_sorted[:3]:  # tylko top 3
+                reward = 1.0 / z
                 for j, k in sol:
                     self.pheromones[j] += reward
 
