@@ -1,42 +1,42 @@
 [
     {
         "num_ants":5,
-        "Min Koszt":4148.64,
-        "Max Koszt":4416.25,
-        "Średni Koszt":4230.75,
-        "Odchylenie Std":87.37,
-        "Czas (s)":0.1662
+        "Min Koszt":5443.89,
+        "Max Koszt":5473.69,
+        "Średni Koszt":5455.81,
+        "Odchylenie Std":14.6,
+        "Czas (s)":0.1767
     },
     {
         "num_ants":10,
-        "Min Koszt":4148.64,
-        "Max Koszt":4360.99,
-        "Średni Koszt":4221.71,
-        "Odchylenie Std":75.14,
-        "Czas (s)":0.3144
+        "Min Koszt":5443.89,
+        "Max Koszt":5443.89,
+        "Średni Koszt":5443.89,
+        "Odchylenie Std":0.0,
+        "Czas (s)":0.3469
     },
     {
         "num_ants":20,
-        "Min Koszt":4148.64,
-        "Max Koszt":4222.05,
-        "Średni Koszt":4167.74,
-        "Odchylenie Std":27.89,
-        "Czas (s)":0.5925
+        "Min Koszt":5443.89,
+        "Max Koszt":5443.89,
+        "Średni Koszt":5443.89,
+        "Odchylenie Std":0.0,
+        "Czas (s)":0.5981
     },
     {
         "num_ants":50,
-        "Min Koszt":4148.64,
-        "Max Koszt":4163.36,
-        "Średni Koszt":4151.58,
-        "Odchylenie Std":5.89,
-        "Czas (s)":1.2644
+        "Min Koszt":5443.89,
+        "Max Koszt":5443.89,
+        "Średni Koszt":5443.89,
+        "Odchylenie Std":0.0,
+        "Czas (s)":1.2614
     },
     {
         "num_ants":100,
-        "Min Koszt":4148.64,
-        "Max Koszt":4148.64,
-        "Średni Koszt":4148.64,
+        "Min Koszt":5443.89,
+        "Max Koszt":5443.89,
+        "Średni Koszt":5443.89,
         "Odchylenie Std":0.0,
-        "Czas (s)":3.3473
+        "Czas (s)":3.4235
     }
 ]

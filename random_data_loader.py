@@ -1,6 +1,6 @@
 import random
 import math
-from constants import P, K #
+from constants import P, K, M_LIMIT #
 
 
 # TODO -> dodać seeda do losowania, można powtarzać eksperymenty
@@ -18,11 +18,11 @@ def generate_test_data(n_demand=20, n_locations=10, area_size=100, seed=None):
         random.seed(seed)
 
     # Generowanie współrzędnych punktów popytu (I)
-    demand_coords = [(rng.uniform(0, area_size), rng.uniform(0, area_size)) 
+    demand_coords = [(random.uniform(0, area_size), random.uniform(0, area_size)) 
                      for _ in range(n_demand)]
     
     # Generowanie współrzędnych potencjalnych lokalizacji (J)
-    loc_coords = [(rng.uniform(0, area_size), rng.uniform(0, area_size)) 
+    loc_coords = [(random.uniform(0, area_size), random.uniform(0, area_size)) 
                   for _ in range(n_locations)]
     
     # Tworzenie słownika demand_points {i: w_i}
@@ -40,10 +40,10 @@ def generate_test_data(n_demand=20, n_locations=10, area_size=100, seed=None):
         dist_matrix.append(row)
         
     # Koszty i parametry techniczne
-    costs_f = [rng.randint(500, 1500) for _ in range(n_locations)] # f_j
-    costs_c = [rng.randint(100, 300) for _ in range(n_locations)]  # c_j
+    costs_f = [random.randint(500, 1500) for _ in range(n_locations)] # f_j
+    costs_c = [random.randint(100, 300) for _ in range(n_locations)]  # c_j
     
-    M = 5  # Maksymalna liczba ładowarek na stację
+    M = M_LIMIT  # Maksymalna liczba ładowarek na stację
     
     # Budżet: ustawiony tak, by starczyło na około 40-60% stacji z pełnym wyposażeniem
     avg_station_cost = (sum(costs_f)/n_locations) + (M/2 * sum(costs_c)/n_locations)

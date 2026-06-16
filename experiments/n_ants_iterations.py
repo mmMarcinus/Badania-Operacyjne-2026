@@ -69,7 +69,7 @@ def run_single_series(param_name, param_values, repeats=10):
     return series_results
 
 def process_and_save(param_name, results):
-    """Buduje DataFrame, drukuje tabele (tekst + markdown), zapisuje pliki w /results."""
+    """Buduje DataFrame, drukuje tabele (markdown), zapisuje pliki w /results."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
     results_dir = os.path.join(script_dir, "results")
     os.makedirs(results_dir, exist_ok=True)

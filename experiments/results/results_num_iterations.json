@@ -1,42 +1,42 @@
 [
     {
         "num_iterations":10,
-        "Min Koszt":4241.69,
-        "Max Koszt":4491.51,
-        "Średni Koszt":4379.42,
-        "Odchylenie Std":77.74,
-        "Czas (s)":0.0731
+        "Min Koszt":5443.89,
+        "Max Koszt":5486.69,
+        "Średni Koszt":5465.29,
+        "Odchylenie Std":21.4,
+        "Czas (s)":0.101
     },
     {
         "num_iterations":20,
-        "Min Koszt":4163.36,
-        "Max Koszt":4561.74,
-        "Średni Koszt":4238.37,
-        "Odchylenie Std":121.29,
-        "Czas (s)":0.1524
+        "Min Koszt":5443.89,
+        "Max Koszt":5473.69,
+        "Średni Koszt":5452.83,
+        "Odchylenie Std":13.66,
+        "Czas (s)":0.1538
     },
     {
         "num_iterations":50,
-        "Min Koszt":4148.64,
-        "Max Koszt":4276.0,
-        "Średni Koszt":4196.14,
-        "Odchylenie Std":46.87,
-        "Czas (s)":0.3305
+        "Min Koszt":5443.89,
+        "Max Koszt":5443.89,
+        "Średni Koszt":5443.89,
+        "Odchylenie Std":0.0,
+        "Czas (s)":0.3343
     },
     {
         "num_iterations":100,
-        "Min Koszt":4148.64,
-        "Max Koszt":4222.05,
-        "Średni Koszt":4160.4,
-        "Odchylenie Std":21.58,
-        "Czas (s)":0.71
+        "Min Koszt":5443.89,
+        "Max Koszt":5443.89,
+        "Średni Koszt":5443.89,
+        "Odchylenie Std":0.0,
+        "Czas (s)":0.7427
     },
     {
         "num_iterations":200,
-        "Min Koszt":4148.64,
-        "Max Koszt":4222.05,
-        "Średni Koszt":4157.45,
-        "Odchylenie Std":21.98,
-        "Czas (s)":0.9011
+        "Min Koszt":5443.89,
+        "Max Koszt":5443.89,
+        "Średni Koszt":5443.89,
+        "Odchylenie Std":0.0,
+        "Czas (s)":1.0821
     }
 ]
