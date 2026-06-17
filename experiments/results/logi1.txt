@@ -1,0 +1,105 @@
+Rozpoczynam...
+
+  [  1/120] strat=elite-3   heur=cost                 α=0.2 β=0.2  (upłynęło: 0s, ETA: 0s)  →  Z=36196161.86 (std=415670.47) | stacji=40.0 | budżet=99.7%
+  [  2/120] strat=elite-3   heur=cost                 α=0.2 β=0.6  (upłynęło: 12s, ETA: 703s)  →  Z=33846324.63 (std=783664.46) | stacji=40.3 | budżet=99.7%
+  [  3/120] strat=elite-3   heur=cost                 α=0.2 β=1.0  (upłynęło: 24s, ETA: 928s)  →  Z=32781442.45 (std=430023.21) | stacji=42.3 | budżet=99.8%
+  [  4/120] strat=elite-3   heur=cost                 α=0.2 β=2.0  (upłynęło: 36s, ETA: 1033s)  →  Z=31948252.21 (std=555157.07) | stacji=44.0 | budżet=99.8%
+  [  5/120] strat=elite-3   heur=cost                 α=0.5 β=0.2  (upłynęło: 48s, ETA: 1102s)  →  Z=34414487.11 (std=936311.06) | stacji=40.7 | budżet=99.8%
+  [  6/120] strat=elite-3   heur=cost                 α=0.5 β=0.6  (upłynęło: 60s, ETA: 1133s)  →  Z=34380113.26 (std=2504387.80) | stacji=40.7 | budżet=99.8%
+  [  7/120] strat=elite-3   heur=cost                 α=0.5 β=1.0  (upłynęło: 72s, ETA: 1157s)  →  Z=33032589.47 (std=751379.67) | stacji=42.3 | budżet=99.8%
+  [  8/120] strat=elite-3   heur=cost                 α=0.5 β=2.0  (upłynęło: 84s, ETA: 1170s)  →  Z=32289479.92 (std=437100.50) | stacji=41.7 | budżet=99.6%
+  [  9/120] strat=elite-3   heur=cost                 α=1.0 β=0.2  (upłynęło: 96s, ETA: 1181s)  →  Z=36192681.41 (std=810453.64) | stacji=40.0 | budżet=99.4%
+  [ 10/120] strat=elite-3   heur=cost                 α=1.0 β=0.6  (upłynęło: 108s, ETA: 1184s)  →  Z=34766702.04 (std=1260706.33) | stacji=40.7 | budżet=99.9%
+  [ 11/120] strat=elite-3   heur=cost                 α=1.0 β=1.0  (upłynęło: 119s, ETA: 1184s)  →  Z=33813810.00 (std=630008.54) | stacji=42.3 | budżet=99.4%
+  [ 12/120] strat=elite-3   heur=cost                 α=1.0 β=2.0  (upłynęło: 131s, ETA: 1180s)  →  Z=31987244.54 (std=256345.37) | stacji=43.7 | budżet=99.8%
+  [ 13/120] strat=elite-3   heur=demand               α=0.2 β=0.2  (upłynęło: 143s, ETA: 1178s)  →  Z=34923715.41 (std=647490.99) | stacji=39.3 | budżet=99.7%
+  [ 14/120] strat=elite-3   heur=demand               α=0.2 β=0.6  (upłynęło: 223s, ETA: 1691s)  →  Z=32786752.24 (std=522372.08) | stacji=40.0 | budżet=99.8%
+  [ 15/120] strat=elite-3   heur=demand               α=0.2 β=1.0  (upłynęło: 303s, ETA: 2123s)  →  Z=31976405.31 (std=328476.63) | stacji=40.3 | budżet=99.7%
+  [ 16/120] strat=elite-3   heur=demand               α=0.2 β=2.0  (upłynęło: 383s, ETA: 2489s)  →  Z=31143498.44 (std=1193372.82) | stacji=41.0 | budżet=99.7%
+  [ 17/120] strat=elite-3   heur=demand               α=0.5 β=0.2  (upłynęło: 462s, ETA: 2800s)  →  Z=34378292.88 (std=446117.18) | stacji=38.7 | budżet=99.9%
+  [ 18/120] strat=elite-3   heur=demand               α=0.5 β=0.6  (upłynęło: 542s, ETA: 3069s)  →  Z=31795371.82 (std=1068429.48) | stacji=40.7 | budżet=99.3%
+  [ 19/120] strat=elite-3   heur=demand               α=0.5 β=1.0  (upłynęło: 622s, ETA: 3307s)  →  Z=31494773.77 (std=471412.61) | stacji=39.7 | budżet=99.7%
+  [ 20/120] strat=elite-3   heur=demand               α=0.5 β=2.0  (upłynęło: 702s, ETA: 3511s)  →  Z=31931187.15 (std=417216.63) | stacji=41.0 | budżet=99.7%
+  [ 21/120] strat=elite-3   heur=demand               α=1.0 β=0.2  (upłynęło: 783s, ETA: 3690s)  →  Z=35442116.99 (std=777001.38) | stacji=40.7 | budżet=99.9%
+  [ 22/120] strat=elite-3   heur=demand               α=1.0 β=0.6  (upłynęło: 863s, ETA: 3843s)  →  Z=32671462.07 (std=233505.55) | stacji=40.3 | budżet=99.6%
+  [ 23/120] strat=elite-3   heur=demand               α=1.0 β=1.0  (upłynęło: 942s, ETA: 3974s)  →  Z=32033937.41 (std=457493.01) | stacji=39.3 | budżet=99.6%
+  [ 24/120] strat=elite-3   heur=demand               α=1.0 β=2.0  (upłynęło: 1022s, ETA: 4087s)  →  Z=30782148.30 (std=223643.02) | stacji=40.3 | budżet=99.5%
+  [ 25/120] strat=elite-3   heur=weighted_demand      α=0.2 β=0.2  (upłynęło: 1101s, ETA: 4185s)  →  Z=35788244.16 (std=1697996.00) | stacji=41.3 | budżet=99.9%
+  [ 26/120] strat=elite-3   heur=weighted_demand      α=0.2 β=0.6  (upłynęło: 1238s, ETA: 4475s)  →  Z=33678154.54 (std=644862.61) | stacji=42.3 | budżet=99.5%
+  [ 27/120] strat=elite-3   heur=weighted_demand      α=0.2 β=1.0  (upłynęło: 1374s, ETA: 4732s)  →  Z=33113118.09 (std=792044.03) | stacji=41.7 | budżet=99.5%
+  [ 28/120] strat=elite-3   heur=weighted_demand      α=0.2 β=2.0  (upłynęło: 1510s, ETA: 4962s)  →  Z=32951120.08 (std=558087.37) | stacji=43.7 | budżet=99.7%
+  [ 29/120] strat=elite-3   heur=weighted_demand      α=0.5 β=0.2  (upłynęło: 1646s, ETA: 5166s)  →  Z=35751274.61 (std=886031.52) | stacji=41.0 | budżet=99.9%
+  [ 30/120] strat=elite-3   heur=weighted_demand      α=0.5 β=0.6  (upłynęło: 1783s, ETA: 5348s)  →  Z=35267908.75 (std=40444.87) | stacji=40.7 | budżet=99.8%
+  [ 31/120] strat=elite-3   heur=weighted_demand      α=0.5 β=1.0  (upłynęło: 1919s, ETA: 5508s)  →  Z=34156410.48 (std=561964.91) | stacji=41.3 | budżet=99.9%
+  [ 32/120] strat=elite-3   heur=weighted_demand      α=0.5 β=2.0  (upłynęło: 2055s, ETA: 5650s)  →  Z=32882062.70 (std=1020259.57) | stacji=42.3 | budżet=99.9%
+  [ 33/120] strat=elite-3   heur=weighted_demand      α=1.0 β=0.2  (upłynęło: 2191s, ETA: 5776s)  →  Z=36167423.90 (std=430214.69) | stacji=40.3 | budżet=99.9%
+  [ 34/120] strat=elite-3   heur=weighted_demand      α=1.0 β=0.6  (upłynęło: 2327s, ETA: 5887s)  →  Z=34071541.89 (std=301243.96) | stacji=41.0 | budżet=99.4%
+  [ 35/120] strat=elite-3   heur=weighted_demand      α=1.0 β=1.0  (upłynęło: 2464s, ETA: 5984s)  →  Z=31452420.94 (std=358427.49) | stacji=41.7 | budżet=99.8%
+  [ 36/120] strat=elite-3   heur=weighted_demand      α=1.0 β=2.0  (upłynęło: 2600s, ETA: 6066s)  →  Z=32721623.46 (std=341406.12) | stacji=43.7 | budżet=99.6%
+
+============================================================
+PODSUMOWANIE WYNIKÓW GRID SEARCH
+============================================================
+
+TOP 10 konfiguracji (najniższe Z):
+   strategy        heuristic  alpha  beta         avg_z       std_z  avg_n_stations  budget_util_pct
+0  all-ants          gravity    0.5   2.0  3.589116e+07  129434.500            20.0        99.554923
+1   elite-3          gravity    1.0   2.0  3.605478e+07  293052.505            20.0        99.926453
+2  all-ants          gravity    1.0   2.0  3.610464e+07  101921.485            20.0        99.593832
+3  all-ants          gravity    0.2   2.0  3.611083e+07  349099.835            20.0        99.034875
+4   elite-3          gravity    0.5   2.0  3.627713e+07   70700.440            20.0        99.500356
+5   elite-3          gravity    0.2   2.0  3.629426e+07   87829.835            20.0        99.473310
+6  all-ants  weighted_demand    0.2   2.0  3.637597e+07   70321.540            20.5        99.576750
+7  all-ants          gravity    0.2   1.0  3.639396e+07  191051.580            20.0        99.547805
+8   elite-3          gravity    0.2   1.0  3.645311e+07    6819.870            20.0        99.015896
+9  all-ants          gravity    0.5   1.0  3.648059e+07  185273.080            19.5        99.324318
+
+Średnie Z według heurystyki:
+                            avg_Z         std_Z        best_Z
+heuristic                                                    
+demand               3.655927e+07  0.000000e+00  3.655927e+07
+gravity              3.681328e+07  7.203296e+05  3.589116e+07
+weighted_demand      3.811414e+07  1.101622e+06  3.637597e+07
+cost                 3.860810e+07  9.952927e+05  3.691928e+07
+coverage_efficiency  3.928380e+07  7.006653e+05  3.770700e+07
+
+Średnie Z według strategii wzmacniania:
+                 avg_Z         std_Z        best_Z
+strategy                                          
+all-ants  3.781245e+07  1.316141e+06  3.589116e+07
+elite-3   3.793898e+07  1.313728e+06  3.605478e+07
+
+Rozpiętość best_z między konfiguracjami: 4312839.32
+Średni std_z (szum wewnątrz konfiguracji): 380738.93
+Stosunek sygnał/szum: 11.33x  (✓ różnice realne)
+
+Generowanie wykresów...
+Warning: QT_DEVICE_PIXEL_RATIO is deprecated. Instead use:
+   QT_AUTO_SCREEN_SCALE_FACTOR to enable platform plugin controlled per-screen factors.
+   QT_SCREEN_SCALE_FACTORS to set per-screen DPI.
+   QT_SCALE_FACTOR to set the application global scale factor.
+  -> 01_heuristic_comparison.png
+  -> 02_heatmap_cost.png
+  -> 02_heatmap_demand.png
+  -> 02_heatmap_weighted_demand.png
+  -> 02_heatmap_coverage_efficiency.png
+  -> 02_heatmap_gravity.png
+  -> 03_beta_lines.png
+  -> 04_alpha_lines.png
+  -> 05_elite_vs_all.png
+  -> 06_convergence_curves.png
+  -> 07_budget_vs_quality.png
+  -> 08_stability_std.png
+
+Wyniki zapisano do: wyniki_grid_search.csv
+
+============================================================
+NAJLEPSZA KONFIGURACJA:
+  Heurystyka: gravity
+  Alpha:      0.5
+  Beta:       2.0
+  Strategia:  all-ants
+  Średnie Z:  35891163.53  (std=129434.50)
+  Śr. stacji: 20.0 / 30
+  Śr. budżet: 104906  (99.6%)
+============================================================

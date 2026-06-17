@@ -1,0 +1,66 @@
+============================================================
+PODSUMOWANIE WYNIKÓW GRID SEARCH
+============================================================
+
+TOP 10 konfiguracji (najniższe Z):
+   strategy        heuristic  alpha  beta         avg_z       std_z  avg_n_stations  budget_util_pct
+0  all-ants          gravity    0.5   2.0  3.589116e+07  129434.500            20.0        99.554923
+1   elite-3          gravity    1.0   2.0  3.605478e+07  293052.505            20.0        99.926453
+2  all-ants          gravity    1.0   2.0  3.610464e+07  101921.485            20.0        99.593832
+3  all-ants          gravity    0.2   2.0  3.611083e+07  349099.835            20.0        99.034875
+4   elite-3          gravity    0.5   2.0  3.627713e+07   70700.440            20.0        99.500356
+5   elite-3          gravity    0.2   2.0  3.629426e+07   87829.835            20.0        99.473310
+6  all-ants  weighted_demand    0.2   2.0  3.637597e+07   70321.540            20.5        99.576750
+7  all-ants          gravity    0.2   1.0  3.639396e+07  191051.580            20.0        99.547805
+8   elite-3          gravity    0.2   1.0  3.645311e+07    6819.870            20.0        99.015896
+9  all-ants          gravity    0.5   1.0  3.648059e+07  185273.080            19.5        99.324318
+
+Średnie Z według heurystyki:
+                            avg_Z         std_Z        best_Z
+heuristic                                                    
+demand               3.655927e+07  0.000000e+00  3.655927e+07
+gravity              3.681328e+07  7.203296e+05  3.589116e+07
+weighted_demand      3.811414e+07  1.101622e+06  3.637597e+07
+cost                 3.860810e+07  9.952927e+05  3.691928e+07
+coverage_efficiency  3.928380e+07  7.006653e+05  3.770700e+07
+
+Średnie Z według strategii wzmacniania:
+                 avg_Z         std_Z        best_Z
+strategy                                          
+all-ants  3.781245e+07  1.316141e+06  3.589116e+07
+elite-3   3.793898e+07  1.313728e+06  3.605478e+07
+
+Rozpiętość best_z między konfiguracjami: 4312839.32
+Średni std_z (szum wewnątrz konfiguracji): 380738.93
+Stosunek sygnał/szum: 11.33x  (✓ różnice realne)
+
+Generowanie wykresów...
+Warning: QT_DEVICE_PIXEL_RATIO is deprecated. Instead use:
+   QT_AUTO_SCREEN_SCALE_FACTOR to enable platform plugin controlled per-screen factors.
+   QT_SCREEN_SCALE_FACTORS to set per-screen DPI.
+   QT_SCALE_FACTOR to set the application global scale factor.
+  -> 01_heuristic_comparison.png
+  -> 02_heatmap_cost.png
+  -> 02_heatmap_demand.png
+  -> 02_heatmap_weighted_demand.png
+  -> 02_heatmap_coverage_efficiency.png
+  -> 02_heatmap_gravity.png
+  -> 03_beta_lines.png
+  -> 04_alpha_lines.png
+  -> 05_elite_vs_all.png
+  -> 06_convergence_curves.png
+  -> 07_budget_vs_quality.png
+  -> 08_stability_std.png
+
+Wyniki zapisano do: wyniki_grid_search.csv
+
+============================================================
+NAJLEPSZA KONFIGURACJA:
+  Heurystyka: gravity
+  Alpha:      0.5
+  Beta:       2.0
+  Strategia:  all-ants
+  Średnie Z:  35891163.53  (std=129434.50)
+  Śr. stacji: 20.0 / 30
+  Śr. budżet: 104906  (99.6%)
+============================================================
