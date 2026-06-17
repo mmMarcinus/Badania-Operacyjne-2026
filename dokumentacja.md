@@ -161,18 +161,18 @@ Eksperymenty zostały wykonane dla dwóch różnych funkcji przypisania popytu:
 
 ![Wykres - Liczba iteracji 2](experiments/results/plot_num_iterations2.png)
 
-### Wielokryteriowy Grid Search — heurystyki, strategie wzmacniania i parametry alpha/beta
+### Wielokryteriowy Grid Search - heurystyki, strategie wzmacniania i parametry alpha/beta
 
-Przeprowadzono pełny grid search na większej instancji problemu (30 potencjalnych lokalizacji, budżet ograniczający wybór do ok. 20 z nich), testując pięć heurystyk (`cost`, `demand`, `weighted_demand`, `gravity`, `coverage_efficiency`), dwie strategie wzmacniania feromonu (`all-ants` – wzmocnienie od wszystkich mrówek w iteracji, `elite-3` – wzmocnienie tylko od 3 najlepszych) oraz kombinacje parametrów alpha ∈ {0.2, 0.5, 1.0} i beta ∈ {1.0, 2.0}.
+Przeprowadzono pełny grid search na większej instancji problemu (30 potencjalnych lokalizacji, budżet ograniczający wybór do ok. 20 z nich), testując pięć heurystyk (`cost`, `demand`, `weighted_demand`, `gravity`, `coverage_efficiency`), dwie strategie wzmacniania feromonu (`all-ants` - wzmocnienie od wszystkich mrówek w iteracji, `elite-3` - wzmocnienie tylko od 3 najlepszych) oraz kombinacje parametrów alpha ∈ {0.2, 0.5, 1.0} i beta ∈ {1.0, 2.0}.
 
 **Heurystyki** \
 Funkcja `_get_heuristic(j)` ocenia atrakcyjność lokalizacji $j$ dla mrówki, łącząc koszt budowy stacji z różnymi miarami pokrycia popytu w okolicy:
 
-- **`cost`** — czysto kosztowa: $1/\text{koszt}_j$. Preferuje najtańsze lokalizacje, niezależnie od tego, ile popytu znajduje się w okolicy.
-- **`demand`** — do kosztu dodaje sumę popytu z punktów leżących bliżej niż `threshold`; liczy się tylko popyt "lokalny" w obrębie sztywnego progu odległości, dalsze punkty nie mają żadnego wpływu.
-- **`weighted_demand`** — uwzględnia popyt z *wszystkich* punktów, ważony odwrotnie proporcjonalnie do odległości ($w_i / (d_{ij}+1)$), bez sztywnego progu — bliskie punkty liczą się znacznie mocniej niż dalekie, ale każdy ma jakiś wpływ.
-- **`coverage_efficiency`** — premiuje lokalizacje będące *jedynym* bliskim wyborem dla danego punktu popytu (najbliższa stacja, a druga najbliższa leży dalej niż `threshold`); liczy tylko popyt pokrywany "wyłącznie" przez tę stację, zniechęcając do duplikowania pokrycia już dobrze obsłużonych obszarów.
-- **`gravity`** — model grawitacyjny: waży popyt odwrotnością *kwadratu* odległości ($w_i / (d_{ij}+1)^2$), czyli silniej premiuje bliskość niż `weighted_demand` — odległe punkty popytu mają praktycznie zerowy wpływ na wynik.
+- **`cost`** - czysto kosztowa: $1/\text{koszt}_j$. Preferuje najtańsze lokalizacje, niezależnie od tego, ile popytu znajduje się w okolicy.
+- **`demand`** - do kosztu dodaje sumę popytu z punktów leżących bliżej niż `threshold`; liczy się tylko popyt "lokalny" w obrębie sztywnego progu odległości, dalsze punkty nie mają żadnego wpływu.
+- **`weighted_demand`** - uwzględnia popyt z *wszystkich* punktów, ważony odwrotnie proporcjonalnie do odległości ($w_i / (d_{ij}+1)$), bez sztywnego progu — bliskie punkty liczą się znacznie mocniej niż dalekie, ale każdy ma jakiś wpływ.
+- **`coverage_efficiency`** - premiuje lokalizacje będące *jedynym* bliskim wyborem dla danego punktu popytu (najbliższa stacja, a druga najbliższa leży dalej niż `threshold`); liczy tylko popyt pokrywany "wyłącznie" przez tę stację, zniechęcając do duplikowania pokrycia już dobrze obsłużonych obszarów.
+- **`gravity`** - model grawitacyjny: waży popyt odwrotnością *kwadratu* odległości ($w_i / (d_{ij}+1)^2$), czyli silniej premiuje bliskość niż `weighted_demand` — odległe punkty popytu mają praktycznie zerowy wpływ na wynik.
 
 Każdy wariant (oprócz samego kosztu) dzieli ostatecznie wynik przez koszt lokalizacji, więc nawet przy uwzględnieniu popytu tańsze stacje pozostają w przewadze.
 
@@ -208,7 +208,7 @@ Każdy wariant (oprócz samego kosztu) dzieli ostatecznie wynik przez koszt loka
 | all-ants | 37812450 | 1316141 | 35891160 |
 | elite-3  | 37938980 | 1313728 | 36054780 |
 
-Rozpiętość między najlepszą a najgorszą konfiguracją wyniosła 4 312 839, a średnie odchylenie standardowe wewnątrz pojedynczej konfiguracji (szum stochastyczności ACO) wyniosło 380 739 — stosunek sygnał/szum ≈ 11,3x, co potwierdza, że zaobserwowane różnice między heurystykami i parametrami są realne, a nie efektem przypadku.
+Rozpiętość między najlepszą a najgorszą konfiguracją wyniosła 4 312 839, a średnie odchylenie standardowe wewnątrz pojedynczej konfiguracji (szum stochastyczności ACO) wyniosło 380 739 - stosunek sygnał/szum ≈ 11,3x, co potwierdza, że zaobserwowane różnice między heurystykami i parametrami są realne, a nie efektem przypadku.
 
 **Najlepsza znaleziona konfiguracja:** heurystyka `gravity`, alpha = 0.5, beta = 2.0, strategia `all-ants` — średnie Z = 35 891 163,53 (std = 129 434,50), śr. liczba stacji 20,0/30, śr. wykorzystanie budżetu 104 906 (99,6%).
 
