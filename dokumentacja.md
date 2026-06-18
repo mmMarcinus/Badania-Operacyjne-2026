@@ -50,7 +50,7 @@ $$\min \quad Z = \sum_{i \in I} \sum_{j \in J} (d_{ij} \cdot x_{ij}) + \sum_{i \
 
 ### 1. Iteracja mrówki
 
-- mrówka przechodzi przez graf i wybiera lokalizacje i liczby ładowarek, probabilistycznie na podstawie śladów feromonowych
+- mrówka przechodzi przez graf i wybiera lokalizacje i liczby ładowarek, probabilistycznie na podstawie śladów feromonowych i własnej wiedzy (heurystyki)
 - na koniec trasy zostawia całą infrastrukturę
 - na jej podstawie, wiemy gdzie są ładowarki, więc zmienne _y_ i _k_ stają się stałymi
 
@@ -71,6 +71,27 @@ $$\min \quad Z = \sum_{i \in I} \sum_{j \in J} (d_{ij} \cdot x_{ij}) + \sum_{i \
 
 - wszystkie ślady feromonowe na mapie są lekko osłabiane, aby uniknąć szybkiego utknięcia w słabym rozwiązaniu i odkrywać inne
 - mrówki, które uzyskały najniższą wartość funkcji celu, zostawiają ślad na wybranych przez siebie lokalizacjach
+
+### 5. Strategie wzmacniania feromonu
+**`all-ants`**- wzmocnienie od wszystkich mrówek w iteracji
+**`elite-3`** - wzmocnienie tylko od 3 najlepszych
+
+### 6. Heurystyki
+Funkcja `_get_heuristic(j)` ocenia atrakcyjność lokalizacji $j$ dla mrówki, łącząc koszt budowy stacji z różnymi miarami pokrycia popytu w okolicy:
+
+- **`cost`** - czysto kosztowa: $1/\text{koszt}_j$. Preferuje najtańsze lokalizacje, niezależnie od tego, ile popytu znajduje się w okolicy.
+- **`demand`** - do kosztu dodaje sumę popytu z punktów leżących bliżej niż `threshold`; liczy się tylko popyt "lokalny" w obrębie sztywnego progu odległości, dalsze punkty nie mają żadnego wpływu.
+- **`weighted_demand`** - uwzględnia popyt z *wszystkich* punktów, ważony odwrotnie proporcjonalnie do odległości ($w_i / (d_{ij}+1)$), bez sztywnego progu - bliskie punkty liczą się znacznie mocniej niż dalekie, ale każdy ma jakiś wpływ.
+- **`coverage_efficiency`** - premiuje lokalizacje będące *jedynym* bliskim wyborem dla danego punktu popytu (najbliższa stacja, a druga najbliższa leży dalej niż `threshold`); liczy tylko popyt pokrywany "wyłącznie" przez tę stację, zniechęcając do duplikowania pokrycia już dobrze obsłużonych obszarów.
+- **`gravity`** - model grawitacyjny: waży popyt odwrotnością *kwadratu* odległości ($w_i / (d_{ij}+1)^2$), czyli silniej premiuje bliskość niż `weighted_demand` - odległe punkty popytu mają praktycznie zerowy wpływ na wynik.
+
+Każdy wariant (oprócz samego kosztu) dzieli ostatecznie wynik przez koszt lokalizacji, więc nawet przy uwzględnieniu popytu tańsze stacje pozostają w przewadze.
+
+### 7. Parametry
+
+- **`alpha`** - kontroluje, jak bardzo mrówka kieruje się feromonem, śladem zostawionym przez inne mrówki
+- **`beta`** - kontroluje, jak bardzo mrówka kieruje się heurystyką - "wiedzą ekspercką"
+
 
 ## 5. Ograniczenia
 
@@ -94,25 +115,6 @@ $$\min \quad Z = \sum_{i \in I} \sum_{j \in J} (d_{ij} \cdot x_{ij}) + \sum_{i \
   Popyt z punktu $i$ może zostać przypisany do stacji $j$ tylko wtedy, gdy stacja w tej lokalizacji zostanie otwarta, i nie może on przekroczyć całkowitego dostępnego popytu w danym punkcie:
   $$x_{ij} \le w_i \cdot y_j \quad \forall i \in I, \forall j \in J$$
 
-## 6. Strategie wzmacniania feromonu
-**`all-ants`**- wzmocnienie od wszystkich mrówek w iteracji
-**`elite-3`** - wzmocnienie tylko od 3 najlepszych
-
-## 7. Heurystyki
-Funkcja `_get_heuristic(j)` ocenia atrakcyjność lokalizacji $j$ dla mrówki, łącząc koszt budowy stacji z różnymi miarami pokrycia popytu w okolicy:
-
-- **`cost`** - czysto kosztowa: $1/\text{koszt}_j$. Preferuje najtańsze lokalizacje, niezależnie od tego, ile popytu znajduje się w okolicy.
-- **`demand`** - do kosztu dodaje sumę popytu z punktów leżących bliżej niż `threshold`; liczy się tylko popyt "lokalny" w obrębie sztywnego progu odległości, dalsze punkty nie mają żadnego wpływu.
-- **`weighted_demand`** - uwzględnia popyt z *wszystkich* punktów, ważony odwrotnie proporcjonalnie do odległości ($w_i / (d_{ij}+1)$), bez sztywnego progu - bliskie punkty liczą się znacznie mocniej niż dalekie, ale każdy ma jakiś wpływ.
-- **`coverage_efficiency`** - premiuje lokalizacje będące *jedynym* bliskim wyborem dla danego punktu popytu (najbliższa stacja, a druga najbliższa leży dalej niż `threshold`); liczy tylko popyt pokrywany "wyłącznie" przez tę stację, zniechęcając do duplikowania pokrycia już dobrze obsłużonych obszarów.
-- **`gravity`** - model grawitacyjny: waży popyt odwrotnością *kwadratu* odległości ($w_i / (d_{ij}+1)^2$), czyli silniej premiuje bliskość niż `weighted_demand` - odległe punkty popytu mają praktycznie zerowy wpływ na wynik.
-
-Każdy wariant (oprócz samego kosztu) dzieli ostatecznie wynik przez koszt lokalizacji, więc nawet przy uwzględnieniu popytu tańsze stacje pozostają w przewadze.
-
-## 8. Parametry
-
-- **`alpha`** - kontroluje, jak bardzo mrówka kieruje się feromonem, śladem zostawionym przez inne mrówki
-- **`beta`** - kontroluje, jak bardzo mrówka kieruje się heurystyką - "wiedzą ekspercką"
 
 ## Eksperymenty obliczeniowe
 
